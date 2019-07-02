@@ -1,6 +1,5 @@
 import React, {Component } from 'react';
 import './App.css';
-import Radium ,{StyleRoot} from 'radium';
 import Person from './Person/Person';
 
 class App extends Component {
@@ -90,11 +89,7 @@ class App extends Component {
     const style ={
       backgroundColor:'green',
       color:'white',
-      ':hover':{
-        backgroundColor:'lightgreen',
-        color:'black'
-      }
-
+   
     }
     let persons =null;
 
@@ -114,10 +109,7 @@ class App extends Component {
            
       );
       style.backgroundColor='red';
-      style[':hover']={
-        backgroundColor:'maroon',
-        color:'white'
-      }
+      
     }
     
     const colorClass=[];
@@ -133,7 +125,7 @@ class App extends Component {
     }
 
     return (
-      <StyleRoot>
+     
       <div className="App">
         <h1>Hi just creating the react app</h1>
         <p id="txtArea"className={colorClass.join(' ')}> This is working just fine !!</p>
@@ -145,11 +137,11 @@ class App extends Component {
         {persons}
        
       </div>
-      </StyleRoot>
+  
     );
     
   }
 };
 
 
-export default Radium(App);
+export default App;
