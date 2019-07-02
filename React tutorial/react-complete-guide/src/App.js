@@ -1,5 +1,5 @@
 import React, {Component } from 'react';
-import './App.css';
+import classes from './App.css';
 import Person from './Person/Person';
 
 class App extends Component {
@@ -86,11 +86,14 @@ class App extends Component {
     }
 */
 
+/* The following is not used because of CSS Modules implemented
     const style ={
       backgroundColor:'green',
       color:'white',
    
     }
+*/
+    let btnClass='';
     let persons =null;
 
     if (this.state.showPersons){
@@ -108,17 +111,17 @@ class App extends Component {
         </div>
            
       );
-      style.backgroundColor='red';
+      btnClass=classes.Red;
       
     }
     
     const colorClass=[];
     if (this.state.persons.length <=2){
-      colorClass.push('red');
+      colorClass.push(classes.red);
 
     }
     if (this.state.persons.length <=1){
-      colorClass.push('bold');
+      colorClass.push(classes.bold);
       //The following has been added on own
       document.getElementById('txtArea').innerHTML="Beware";
       
@@ -126,11 +129,11 @@ class App extends Component {
 
     return (
      
-      <div className="App">
+      <div className={classes.App}>
         <h1>Hi just creating the react app</h1>
         <p id="txtArea"className={colorClass.join(' ')}> This is working just fine !!</p>
-        <button id="clicker"
-          style={style}
+        <button
+          className={btnClass}
           onClick={this.toggleContentHandler}>
           Toggle Content !
         </button>
