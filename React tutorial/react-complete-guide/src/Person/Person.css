@@ -1,0 +1,25 @@
+.Person{
+    width: 60%;
+    margin: 16px auto;
+    border: 2px solid #eee;
+    box-shadow: 0 2px 3px #ccc;
+    padding: 16px;
+    text-align: center;
+    background-color: black;
+    color: white;
+    transition: .5s;
+    border-radius: 25px;
+}
+.Person:hover{
+    background-color: blue;
+
+}
+button{
+    font: inherit;
+    transition: 0.75s;
+}
+button:hover{
+    background-color: blue;
+    color: white;
+    font-size: 20px;
+}
