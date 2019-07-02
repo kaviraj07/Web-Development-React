@@ -18,8 +18,8 @@ button{
     font: inherit;
     transition: 0.75s;
 }
-button:hover{
-    background-color: blue;
+/*button:hover{
+    background-color: red;
     color: white;
     font-size: 20px;
-}
+}*/

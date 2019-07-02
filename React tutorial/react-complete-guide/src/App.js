@@ -1,5 +1,6 @@
 import React, {Component } from 'react';
 import './App.css';
+import Radium ,{StyleRoot} from 'radium';
 import Person from './Person/Person';
 
 class App extends Component {
@@ -55,7 +56,18 @@ class App extends Component {
       persons:persons
     });
   }
+  
+  //This handler will delete component person on click
 
+  delContentHandler =(pid) =>{
+
+    const myNodes=[...this.state.persons];
+    myNodes.splice(pid,1);
+    const newNode=myNodes;  
+    this.setState({persons:newNode})
+   
+  }
+  
 
   //This handler will toggle the block of content
 
@@ -74,6 +86,16 @@ class App extends Component {
       cursor:'pointer'
     }
 */
+
+    const style ={
+      backgroundColor:'green',
+      color:'white',
+      ':hover':{
+        backgroundColor:'lightgreen',
+        color:'black'
+      }
+
+    }
     let persons =null;
 
     if (this.state.showPersons){
@@ -85,28 +107,49 @@ class App extends Component {
                     age={person.age}
                     key={person.id}
                     change={(event) => this.nameUpdater(event,person.id)}
-                   
+                    delCont={() => this.delContentHandler(person.id)}
                     />
           })}  
         </div>
            
       );
+      style.backgroundColor='red';
+      style[':hover']={
+        backgroundColor:'maroon',
+        color:'white'
+      }
     }
+    
+    const colorClass=[];
+    if (this.state.persons.length <=2){
+      colorClass.push('red');
+
+    }
+    if (this.state.persons.length <=1){
+      colorClass.push('bold');
+      //The following has been added on own
+      document.getElementById('txtArea').innerHTML="Beware";
+      
+    }
+
     return (
+      <StyleRoot>
       <div className="App">
         <h1>Hi just creating the react app</h1>
-        <p>This is working just fine !!</p>
+        <p id="txtArea"className={colorClass.join(' ')}> This is working just fine !!</p>
         <button id="clicker"
+          style={style}
           onClick={this.toggleContentHandler}>
-          Hide Content !
+          Toggle Content !
         </button>
         {persons}
        
       </div>
+      </StyleRoot>
     );
     
   }
 };
 
 
-export default App;
+export default Radium(App);
