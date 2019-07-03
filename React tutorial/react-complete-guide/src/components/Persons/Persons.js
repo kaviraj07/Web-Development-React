@@ -1,16 +1,20 @@
-import React from 'react';
+import React, {Component} from 'react';
 import Person from './Person/Person';
 
-const persons =(props) => props.persons.map((person,index)=>{
-       
-        return <Person
+class Persons extends Component{
+    render(){
+        return this.props.persons.map((person,index)=>{
             
-            name={person.name}
-            age={person.age}
-            key={person.id}
-            change={(event) => props.change(event,person.id)}
-            delCont={() => props.delCont(index)}
-        />
-    });
-
-export default persons;
+                return (<Person
+                    
+                    name={person.name}
+                    age={person.age}
+                    key={person.id}
+                    change={(event) => this.props.change(event,person.id)}
+                    delCont={() => this.props.delCont(index)}
+                />
+                )
+            });
+    }
+}
+export default Persons;
